@@ -14,12 +14,7 @@ RUN curl -sS https://getcomposer.org/installer | php && \
     export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 
 # 作業ディレクトリ
-WORKDIR /home/ralsnet_channel
+WORKDIR /home/ralsnet_channel/bulletin-board
 
-# bulletin-boardアプリの作成
-# RUN composer create-project --prefer-dist laravel/laravel bulletin-board
-
-# RUN cd bulletin-board
-
-# ポート設定
-#EXPOSE 8000
+# 立ち上げ
+CMD ["php", "artisan", "serve", "--host=172.17.0.3"]
