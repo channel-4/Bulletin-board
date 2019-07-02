@@ -1,3 +1,4 @@
 app/bulletin-board/
 .DS_Store
 .idea/
+db/*
