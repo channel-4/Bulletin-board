@@ -11,9 +11,8 @@ services:
     command: php artisan serve --host=0.0.0.0
   db:
     image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: rals_channel
+    env_file:
+      - "./db/db_env"
     volumes:
       - './db/data:/var/lib/mysql'
     ports:

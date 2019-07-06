@@ -1,4 +1,6 @@
 app/bulletin-board/
 .DS_Store
 .idea/
-db/*
+db/db_env
+db/data/*
+memo.txt
