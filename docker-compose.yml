@@ -1,18 +1,20 @@
-version: '3'
+version: '3.7'
 services:
   app:
-    build: . # Dockerfileからコンテナ生成・起動する場合 "."
-    command: php artisan serve
+    build: './app'
     volumes:
-      - ./app:/home/ralsnet_channel # ホスト側のディレクトリ:コンテナ側のディレクトリ, app=>/home/ralsnet_channelにマウント
+      - './app:/home/ralsnet_channel:cached'
     ports:
-      - "55555:8000"
+      - '55555:8000'
     links:
       - db
+    command: php artisan serve --host=0.0.0.0
   db:
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: rals_channel
-      MYSQL_DATABASE: password
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: rals_channel
+    volumes:
+      - './db/data:/var/lib/mysql'
     ports:
-      - "33066:3306"
+      - '33066:3306'
